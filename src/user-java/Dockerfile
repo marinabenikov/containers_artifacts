@@ -31,7 +31,7 @@ LABEL org.opencontainers.image.title="Trip Insights - User (Java) API" \
       org.opencontainers.image.revision=$IMAGE_SOURCE_REVISION 
 
 # add debugging utilities
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing \
     ca-certificates \
     curl \
     jq \
