@@ -32,36 +32,38 @@ spec:
         app: tripinsights-tripviewer
     spec:
       containers:
-      - image: registrydiw3256.azurecr.io/tripinsights/tripviewer:latest
-        imagePullPolicy: Always
-        name: tripviewer
-        ports:
-        - containerPort: 80
-          protocol: TCP
-        env:
-          - name: SQL_USER
-            valueFrom:
-              secretKeyRef:
-                key: SQL_USER
-                name: sql
-          - name: SQL_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                key: SQL_PASSWORD
-                name: sql
-          - name: SQL_SERVER
-            valueFrom:
-              secretKeyRef:
-                key: SQL_SERVER
-                name: sql
-          - name: SQL_DBNAME
-            valueFrom:
-              secretKeyRef:
-                key: SQL_DBNAME
-                name: sql
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
+        - image: registrydiw3256.azurecr.io/tripinsights/tripviewer:latest
+          imagePullPolicy: Always
+          name: tripviewer
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: USERPROFILE_API_ENDPOINT
+              value: "http://tripinsights-userprofile"
+            - name: SQL_USER
+              valueFrom:
+                secretKeyRef:
+                  key: SQL_USER
+                  name: sql
+            - name: SQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: SQL_PASSWORD
+                  name: sql
+            - name: SQL_SERVER
+              valueFrom:
+                secretKeyRef:
+                  key: SQL_SERVER
+                  name: sql
+            - name: SQL_DBNAME
+              valueFrom:
+                secretKeyRef:
+                  key: SQL_DBNAME
+                  name: sql
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
@@ -70,18 +72,18 @@ spec:
 status:
   availableReplicas: 1
   conditions:
-  - lastTransitionTime: "2023-06-11T13:18:13Z"
-    lastUpdateTime: "2023-06-11T13:18:13Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: "2023-06-11T13:18:13Z"
-    lastUpdateTime: "2023-06-12T08:03:24Z"
-    message: ReplicaSet "tripinsights-tripviewer-85cfc47b96" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
+    - lastTransitionTime: "2023-06-11T13:18:13Z"
+      lastUpdateTime: "2023-06-11T13:18:13Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2023-06-11T13:18:13Z"
+      lastUpdateTime: "2023-06-12T08:03:24Z"
+      message: ReplicaSet "tripinsights-tripviewer-85cfc47b96" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
   observedGeneration: 2
   readyReplicas: 1
   replicas: 1
