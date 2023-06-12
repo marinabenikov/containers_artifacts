@@ -1,0 +1,94 @@
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: api-trips-role-binding
+  namespace: trips
+subjects:
+- kind: User
+  name: 32914a16-78de-4885-b409-1343d31dce3b #<aad-user-object-id>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: trips_writer
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: api-poi-role-binding
+  namespace: poi
+subjects:
+- kind: User
+  name: 32914a16-78de-4885-b409-1343d31dce3b #<aad-user-object-id>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: poi_reader
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: api-tripviewer-role-binding
+  namespace: tripviewer
+subjects:
+- kind: User
+  name: 32914a16-78de-4885-b409-1343d31dce3b #<aad-user-object-id>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: tripviewer_reader
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: web-trips-role-binding
+  namespace: trips
+subjects:
+- kind: User
+  name: 345369af-ab52-4bd9-ab76-55f532f98371 #<aad-user-object-id>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: trips_reader
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: web-poi-role-binding
+  namespace: poi
+subjects:
+- kind: User
+  name: 345369af-ab52-4bd9-ab76-55f532f98371 #<aad-user-object-id>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: poi_writer
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: web-tripviewer-role-binding
+  namespace: tripviewer
+subjects:
+- kind: User
+  name: 345369af-ab52-4bd9-ab76-55f532f98371 #<aad-user-object-id>
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: tripviewer_writer
+  apiGroup: rbac.authorization.k8s.io
