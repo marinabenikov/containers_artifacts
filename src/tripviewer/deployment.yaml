@@ -41,6 +41,8 @@ spec:
           env:
             - name: USERPROFILE_API_ENDPOINT
               value: "http://tripinsights-userprofile"
+            - name: TRIPS_API_ENDPOINT
+              value: "http://tripinsights-trips"
             - name: SQL_USER
               valueFrom:
                 secretKeyRef:
