@@ -10,7 +10,7 @@ metadata:
   labels:
     app: tripinsights-tripviewer
   name: tripinsights-tripviewer
-  namespace: default
+  namespace: web-dev
   resourceVersion: "302936"
   uid: 2142c226-cd51-4c6a-a89c-bc46d7c4f5c8
 spec:

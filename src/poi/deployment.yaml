@@ -12,7 +12,7 @@ metadata:
   labels:
     app: tripinsights-poi
   name: tripinsights-poi
-  namespace: default
+  namespace: api-dev
   resourceVersion: "13392"
   uid: 6080576e-6d71-4c45-9412-2c1ae469c67b
 spec:
