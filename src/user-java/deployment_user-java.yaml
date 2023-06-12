@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: user-java
+  labels:
+    name: user-java
+---
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+  labels:
+    app: tripinsights-user-java
+  name: tripinsights-user-java
+  namespace: user-java  
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: tripinsights-user-java
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: tripinsights-user-java
+    spec:
+      containers:
+      - image: registrydiw3256.azurecr.io/tripinsights/user-java:latest
+        imagePullPolicy: Always
+        name: user-java
+        env:
+          - name: SQL_USER
+            valueFrom:
+              secretKeyRef:
+                key: SQL_USER
+                name: sql
+          - name: SQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: SQL_PASSWORD
+                name: sql
+          - name: SQL_SERVER
+            valueFrom:
+              secretKeyRef:
+                key: SQL_SERVER
+                name: sql
+          - name: SQL_DBNAME
+            valueFrom:
+              secretKeyRef:
+                key: SQL_DBNAME
+                name: sql
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
