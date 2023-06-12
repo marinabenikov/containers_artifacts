@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2023-06-12T08:06:21Z"
+  labels:
+    app: tripinsights-tripviewer
+  name: tripinsights-tripviewer
+  namespace: default
+  resourceVersion: "291370"
+  uid: 8f32b2de-8f3d-4479-b7cd-78ef99bd16a4
+spec:
+  clusterIP: 10.0.159.98
+  clusterIPs:
+  - 10.0.159.98
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: tripinsights-tripviewer
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
