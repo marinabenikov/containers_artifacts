@@ -39,6 +39,10 @@ spec:
         - containerPort: 80
           protocol: TCP
         env:
+          - name: USERPROFILE_API_ENDPOINT
+            value: "10.0.150.214"
+          - name: TRIPS_API_ENDPOINT
+            value: "10.0.99.189"
           - name: SQL_USER
             valueFrom:
               secretKeyRef:
