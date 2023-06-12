@@ -54,6 +54,8 @@ spec:
               key: SQL_DBNAME
               name: sql
         image: registrydiw3256.azurecr.io/tripinsights/trips:latest
+        ports:
+        - containerPort: 80
         imagePullPolicy: Always
         name: trips
         resources: {}
