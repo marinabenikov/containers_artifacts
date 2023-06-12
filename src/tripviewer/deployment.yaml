@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"3"},"creationTimestamp":"2023-06-12T08:51:33Z","generation":3,"labels":{"app":"tripinsights-tripviewer"},"name":"tripinsights-tripviewer","namespace":"default","resourceVersion":"309184","uid":"2142c226-cd51-4c6a-a89c-bc46d7c4f5c8"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"tripinsights-tripviewer"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"tripinsights-tripviewer"}},"spec":{"containers":[{"env":[{"name":"USERPROFILE_API_ENDPOINT","value":"http://tripinsights-userprofile"},{"name":"TRIPS_API_ENDPOINT","value":"http://tripinsights-trips"},{"name":"ASPNETCORE_ENVIRONMENT","value":"Development"},{"name":"SQL_USER","valueFrom":{"secretKeyRef":{"key":"SQL_USER","name":"sql"}}},{"name":"SQL_PASSWORD","valueFrom":{"secretKeyRef":{"key":"SQL_PASSWORD","name":"sql"}}},{"name":"SQL_SERVER","valueFrom":{"secretKeyRef":{"key":"SQL_SERVER","name":"sql"}}},{"name":"SQL_DBNAME","valueFrom":{"secretKeyRef":{"key":"SQL_DBNAME","name":"sql"}}}],"image":"registrydiw3256.azurecr.io/tripinsights/tripviewer:latest","imagePullPolicy":"Always","name":"tripviewer","ports":[{"containerPort":80,"protocol":"TCP"}],"resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2023-06-12T09:10:14Z","lastUpdateTime":"2023-06-12T09:10:14Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"},{"lastTransitionTime":"2023-06-12T08:51:33Z","lastUpdateTime":"2023-06-12T09:15:35Z","message":"ReplicaSet \"tripinsights-tripviewer-675fb49b85\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"}],"observedGeneration":3,"readyReplicas":1,"replicas":1,"updatedReplicas":1}}
+  creationTimestamp: "2023-06-12T09:28:54Z"
+  generation: 3
+  labels:
+    app: tripinsights-tripviewer
+  name: tripinsights-tripviewer
+  namespace: default
+  resourceVersion: "336771"
+  uid: fdcc3759-f783-4d57-8026-9caf0b04d564
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: tripinsights-tripviewer
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: tripinsights-tripviewer
+    spec:
+      containers:
+      - env:
+        - name: USERPROFILE_API_ENDPOINT
+          value: http://tripinsights-userprofile
+        - name: TRIPS_API_ENDPOINT
+          value: http://tripinsights-trips
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Development
+        - name: SQL_USER
+          valueFrom:
+            secretKeyRef:
+              key: SQL_USER
+              name: sql
+        - name: SQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: SQL_PASSWORD
+              name: sql
+        - name: SQL_SERVER
+          valueFrom:
+            secretKeyRef:
+              key: SQL_SERVER
+              name: sql
+        - name: SQL_DBNAME
+          valueFrom:
+            secretKeyRef:
+              key: SQL_DBNAME
+              name: sql
+        image: registrydiw3256.azurecr.io/tripinsights/tripviewer:latest
+        imagePullPolicy: Always
+        name: tripviewer
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2023-06-12T09:28:55Z"
+    lastUpdateTime: "2023-06-12T09:28:59Z"
+    message: ReplicaSet "tripinsights-tripviewer-675fb49b85" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2023-06-12T11:03:15Z"
+    lastUpdateTime: "2023-06-12T11:03:15Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 3
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
