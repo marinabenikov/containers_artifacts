@@ -13,8 +13,8 @@ ARG IMAGE_SOURCE_REVISION
 
 ENV PORT=80 \
     SQL_USER="sqladmin" \
-    SQL_PASSWORD="changeme" \
-    SQL_SERVER="changeme.database.windows.net" \
+    SQL_PASSWORD="test1234" \
+    SQL_SERVER="tcp:sqlserverdiw3256.database.windows.net" \
     SQL_DBNAME="mydrivingDB"
 
 # Metadata as defined in OCI image spec annotations - https://github.com/opencontainers/image-spec/blob/master/annotations.md
@@ -31,7 +31,7 @@ LABEL org.opencontainers.image.title="Trip Insights - User (Java) API" \
       org.opencontainers.image.revision=$IMAGE_SOURCE_REVISION 
 
 # add debugging utilities
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends --fix-missing \
     ca-certificates \
     curl \
     jq \

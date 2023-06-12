@@ -46,8 +46,8 @@ ARG IMAGE_SOURCE_REVISION
 
 # set DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false to overcome an incompatibility issue that prevents the app from connecting to Azure SQL
 ENV SQL_USER="sqladmin" \
-    SQL_PASSWORD="changeme" \
-    SQL_SERVER="changeme.database.windows.net" \
+    SQL_PASSWORD="test1234" \
+    SQL_SERVER="tcp:sqlserverdiw3256.database.windows.net" \
     SQL_DBNAME="mydrivingDB" \
     WEB_PORT=80 \
     WEB_SERVER_BASE_URI="http://0.0.0.0" \

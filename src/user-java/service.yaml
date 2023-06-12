@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2023-06-12T07:40:58Z"
+  labels:
+    app: tripinsights-user-java
+  name: tripinsights-user-java
+  namespace: default
+  resourceVersion: "284920"
+  uid: bc3117ec-86cb-4b3d-87ab-943872ac4ce5
+spec:
+  clusterIP: 10.0.48.132
+  clusterIPs:
+  - 10.0.48.132
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: tripinsights-user-java
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

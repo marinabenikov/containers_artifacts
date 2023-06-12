@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "2"
+  creationTimestamp: "2023-06-11T12:37:41Z"
+  generation: 2
+  labels:
+    app: tripinsights-user-java
+  name: tripinsights-user-java
+  namespace: default
+  resourceVersion: "284701"
+  uid: 371fae39-2aa5-45f9-bc59-1a1455be0e94
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: tripinsights-user-java
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: tripinsights-user-java
+    spec:
+      containers:
+      - image: registrydiw3256.azurecr.io/tripinsights/user-java:latest
+        imagePullPolicy: Always
+        name: user-java
+        env:
+          - name: SQL_USER
+            valueFrom:
+              secretKeyRef:
+                key: SQL_USER
+                name: sql
+          - name: SQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: SQL_PASSWORD
+                name: sql
+          - name: SQL_SERVER
+            valueFrom:
+              secretKeyRef:
+                key: SQL_SERVER
+                name: sql
+          - name: SQL_DBNAME
+            valueFrom:
+              secretKeyRef:
+                key: SQL_DBNAME
+                name: sql
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2023-06-11T13:16:30Z"
+    lastUpdateTime: "2023-06-11T13:16:30Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2023-06-11T13:16:30Z"
+    lastUpdateTime: "2023-06-12T07:40:06Z"
+    message: ReplicaSet "tripinsights-user-java-79c4588bb7" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
