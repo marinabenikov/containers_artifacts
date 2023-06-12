@@ -33,6 +33,27 @@ spec:
       - image: registrydiw3256.azurecr.io/tripinsights/user-java:latest
         imagePullPolicy: Always
         name: user-java
+        env:
+          - name: SQL_USER
+            valueFrom:
+              secretKeyRef:
+                key: SQL_USER
+                name: sql
+          - name: SQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: SQL_PASSWORD
+                name: sql
+          - name: SQL_SERVER
+            valueFrom:
+              secretKeyRef:
+                key: SQL_SERVER
+                name: sql
+          - name: SQL_DBNAME
+            valueFrom:
+              secretKeyRef:
+                key: SQL_DBNAME
+                name: sql
         ports:
         - containerPort: 80
           protocol: TCP

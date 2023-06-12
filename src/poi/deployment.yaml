@@ -45,6 +45,26 @@ spec:
               value: "Hello from the environment"
             - name: DEMO_FAREWELL
               value: "Such a sweet sorrow"
+            - name: SQL_USER
+              valueFrom:
+                secretKeyRef:
+                  key: SQL_USER
+                  name: sql
+            - name: SQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: SQL_PASSWORD
+                  name: sql
+            - name: SQL_SERVER
+              valueFrom:
+                secretKeyRef:
+                  key: SQL_SERVER
+                  name: sql
+            - name: SQL_DBNAME
+              valueFrom:
+                secretKeyRef:
+                  key: SQL_DBNAME
+                  name: sql
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
