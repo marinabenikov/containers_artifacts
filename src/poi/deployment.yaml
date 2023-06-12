@@ -35,6 +35,8 @@ spec:
     spec:
       containers:
         - image: registrydiw3256.azurecr.io/tripinsights/poi:latest
+          ports:
+          - containerPort: 80
           imagePullPolicy: Always
           name: poi
           resources: {}
