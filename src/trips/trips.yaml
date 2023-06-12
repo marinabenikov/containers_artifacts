@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"7"},"creationTimestamp":"2023-06-11T12:37:06Z","generation":11,"labels":{"app":"tripinsights-trips"},"name":"tripinsights-trips","namespace":"default","resourceVersion":"287101","uid":"b244322c-58b8-4c8f-83ba-50ddced98cdc"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"app":"tripinsights-trips"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"app":"tripinsights-trips"}},"spec":{"containers":[{"env":[{"name":"DEBUG_LOGGING","value":"true"},{"name":"SQL_USER","valueFrom":{"secretKeyRef":{"key":"SQL_USER","name":"sql"}}},{"name":"SQL_PASSWORD","valueFrom":{"secretKeyRef":{"key":"SQL_PASSWORD","name":"sql"}}},{"name":"SQL_SERVER","valueFrom":{"secretKeyRef":{"key":"SQL_SERVER","name":"sql"}}},{"name":"SQL_DBNAME","valueFrom":{"secretKeyRef":{"key":"SQL_DBNAME","name":"sql"}}}],"image":"registrydiw3256.azurecr.io/tripinsights/trips:latest","imagePullPolicy":"Always","name":"trips","ports":[{"containerPort":80}],"resources":{},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2023-06-11T13:19:19Z","lastUpdateTime":"2023-06-12T07:48:31Z","message":"ReplicaSet \"tripinsights-trips-5d745596fc\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"},{"lastTransitionTime":"2023-06-12T07:49:19Z","lastUpdateTime":"2023-06-12T07:49:19Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"}],"observedGeneration":11,"readyReplicas":1,"replicas":1,"updatedReplicas":1}}
+  creationTimestamp: "2023-06-12T08:55:54Z"
+  generation: 3
+  labels:
+    app: tripinsights-trips
+  name: tripinsights-trips
+  namespace: default
+  resourceVersion: "313307"
+  uid: 3a4a3d22-60bf-4fa3-9447-1988d46c5d3b
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: tripinsights-trips
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: tripinsights-trips
+    spec:
+      containers:
+      - env:
+        - name: DEBUG_LOGGING
+          value: "true"
+        - name: SQL_USER
+          valueFrom:
+            secretKeyRef:
+              key: SQL_USER
+              name: sql
+        - name: SQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: SQL_PASSWORD
+              name: sql
+        - name: SQL_SERVER
+          valueFrom:
+            secretKeyRef:
+              key: SQL_SERVER
+              name: sql
+        - name: SQL_DBNAME
+          valueFrom:
+            secretKeyRef:
+              key: SQL_DBNAME
+              name: sql
+        image: registrydiw3256.azurecr.io/tripinsights/trips:latest
+        imagePullPolicy: Always
+        name: trips
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2023-06-12T08:55:54Z"
+    lastUpdateTime: "2023-06-12T08:55:57Z"
+    message: ReplicaSet "tripinsights-trips-5cb6f4498" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  - lastTransitionTime: "2023-06-12T09:31:35Z"
+    lastUpdateTime: "2023-06-12T09:31:35Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  observedGeneration: 3
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
