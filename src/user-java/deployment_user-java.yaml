@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: user-java
+  name: api
   labels:
-    name: user-java
+    name: api
 ---
 
 
@@ -15,7 +15,7 @@ metadata:
   labels:
     app: tripinsights-user-java
   name: tripinsights-user-java
-  namespace: user-java  
+  namespace: api
 spec:
   progressDeadlineSeconds: 600
   replicas: 1

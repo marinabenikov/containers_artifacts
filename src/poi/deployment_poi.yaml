@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: poi
+  name: api
   labels:
-    name: poi
+    name: api
 
 ---
 # Please edit the object below. Lines beginning with a '#' will be ignored,
@@ -18,7 +18,7 @@ metadata:
   labels:
     app: tripinsights-poi
   name: tripinsights-poi
-  namespace: poi
+  namespace: api
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
