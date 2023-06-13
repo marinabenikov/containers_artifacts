@@ -1,8 +1,9 @@
+
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: poi_writer
-  namespace: poi
+  name: web_writer
+  namespace: web
 rules:
 - apiGroups: [""]
   resources: ["pods", "services", "configmaps"]
@@ -11,18 +12,8 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: tripviewer_writer
-  namespace: tripviewer
-rules:
-- apiGroups: [""]
-  resources: ["pods", "services", "configmaps"]
-  verbs: ["get", "watch", "list", "update"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  name: trips_writer
-  namespace: trips
+  name: api_writer
+  namespace: api
 rules:
 - apiGroups: [""]
   resources: ["pods", "services", "configmaps"]
