@@ -3,7 +3,7 @@ kind: Namespace
 metadata:
   name: tripviewer
   labels:
-    name: tripviewer
+    name: web
 ---
 
 apiVersion: apps/v1
@@ -14,7 +14,7 @@ metadata:
   labels:
     app: tripinsights-tripviewer
   name: tripinsights-tripviewer
-  namespace: tripviewer  
+  namespace: web
 spec:
   progressDeadlineSeconds: 600
   replicas: 1

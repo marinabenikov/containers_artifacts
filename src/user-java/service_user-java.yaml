@@ -5,7 +5,7 @@ metadata:
   labels:
     app: tripinsights-user-java
   name: tripinsights-user-java
-  namespace: user-java
+  namespace: api
   resourceVersion: "10288"
   uid: 970b9aa5-f7b1-4b05-8ca9-2fb3730bf704
 spec:

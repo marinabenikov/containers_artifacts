@@ -78,4 +78,10 @@ spec:
   rules:
     - http:
         paths:
-          -
+          - path: /api/trips
+            pathType: Prefix
+            backend:
+              service:
+                name: userprofile
+                port:
+                  number: 80

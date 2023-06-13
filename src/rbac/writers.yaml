@@ -2,7 +2,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: poi_writer
-  namespace: poi
+  namespace: api
 rules:
 - apiGroups: [""]
   resources: ["pods", "services", "configmaps"]
@@ -12,7 +12,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: tripviewer_writer
-  namespace: tripviewer
+  namespace: web
 rules:
 - apiGroups: [""]
   resources: ["pods", "services", "configmaps"]
@@ -22,7 +22,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: trips_writer
-  namespace: trips
+  namespace: api
 rules:
 - apiGroups: [""]
   resources: ["pods", "services", "configmaps"]

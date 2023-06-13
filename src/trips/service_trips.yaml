@@ -5,7 +5,7 @@ metadata:
   labels:
     app: tripinsights-trips
   name: tripinsights-trips
-  namespace: trips
+  namespace: api
   resourceVersion: "9985"
   uid: 23de82ce-57d5-439c-8bc8-ddafcc0e8376
 spec:
