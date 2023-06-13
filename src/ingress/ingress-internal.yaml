@@ -65,23 +65,3 @@ spec:
                 name: userprofile
                 port:
                   number: 80
----
-
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: web-ingress
-  namespace: web
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  rules:
-    - http:
-        paths:
-          - path: /api/tripviewer
-            pathType: Prefix
-            backend:
-              service:
-                name: tripinsights-tripviewer
-                port:
-                  number: 80
