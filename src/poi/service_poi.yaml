@@ -5,7 +5,7 @@ metadata:
   labels:
     app: tripinsights-poi
   name: tripinsights-poi
-  namespace: poi
+  namespace: api
   resourceVersion: "10018"
   uid: 66093d4e-9466-4022-83bc-f6bd6ee38abe
 spec:

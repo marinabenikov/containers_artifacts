@@ -5,7 +5,7 @@ metadata:
   labels:
     app: tripinsights-tripviewer
   name: tripinsights-tripviewer
-  namespace: default
+  namespace: api
   resourceVersion: "291370"
   uid: 8f32b2de-8f3d-4479-b7cd-78ef99bd16a4
 spec:
