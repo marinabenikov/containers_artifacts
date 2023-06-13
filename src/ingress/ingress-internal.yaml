@@ -78,10 +78,10 @@ spec:
   rules:
     - http:
         paths:
-          - path: /api/trips
+          - path: /api/tripviewer
             pathType: Prefix
             backend:
               service:
-                name: userprofile
+                name: tripinsights-tripviewer
                 port:
                   number: 80
