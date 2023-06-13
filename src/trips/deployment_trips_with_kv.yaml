@@ -46,52 +46,17 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
-        - name: keyvault-secret-sql-user
+        - name: keyvault-secret-sql
           mountPath: "/mnt/secrets-store"
           readOnly: true
-        - name: keyvault-secret-sql-password
-          mountPath: /etc/secrets/sql-password
-          readOnly: true
-        - name: keyvault-secret-sql-server
-          mountPath: /etc/secrets/sql-server
-          readOnly: true
-        - name: keyvault-secret-sql-db-name
-          mountPath: /etc/secrets/sql-db-name
-          readOnly: true
       volumes:
-      - name: keyvault-secret-sql-user
+      - name: keyvault-secret-sql
         csi:
           driver: secrets-store.csi.k8s.io
           readOnly: true
           volumeAttributes:
             secretProviderClass: "keyvault-trips"
       - name: keyvault-secret-sql-password
-        flexVolume:
-          driver: "azure/kv"
-          secretRef:
-            name: team-six-secrets
-          options:
-            keyvaultname: "TeamSixSecrets"
-            keyvaultobjectname: "SQLPASSWORD"
-            newkeyname: "sql-password.txt"
-      - name: keyvault-secret-sql-server
-        flexVolume:
-          driver: "azure/kv"
-          secretRef:
-            name: team-six-secrets
-          options:
-            keyvaultname: "TeamSixSecrets"
-            keyvaultobjectname: "SQLSERVER"
-            newkeyname: "sql-server.txt"
-      - name: keyvault-secret-sql-db-name
-        flexVolume:
-          driver: "azure/kv"
-          secretRef:
-            name: team-six-secrets
-          options:
-            keyvaultname: "TeamSixSecrets"
-            keyvaultobjectname: "SQLDBNAME"
-            newkeyname: "sql-db-name.txt"
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
