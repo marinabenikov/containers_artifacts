@@ -2,9 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: trip-viewer-ingress
-  namespace: ingress
+  namespace: ingress-nginx
   annotations:
-    kubernetes.io/ingress.class: "{{CHANGEME - nginx|addon-http-application-routing|etc}}"
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
     - http:
