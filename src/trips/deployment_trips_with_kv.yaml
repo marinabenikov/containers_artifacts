@@ -47,7 +47,7 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
         - name: keyvault-secret-sql-user
-          mountPath: /etc/secrets/sql-user
+          mountPath: "/mnt/secrets-store"
           readOnly: true
         - name: keyvault-secret-sql-password
           mountPath: /etc/secrets/sql-password
@@ -60,14 +60,11 @@ spec:
           readOnly: true
       volumes:
       - name: keyvault-secret-sql-user
-        flexVolume:
-          driver: "azure/kv"
-          secretRef:
-            name: team-six-secrets
-          options:
-            keyvaultname: "TeamSixSecrets"
-            keyvaultobjectname: "SQLUSER" 
-            newkeyname: "sql-user.txt"
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: "keyvault-trips"
       - name: keyvault-secret-sql-password
         flexVolume:
           driver: "azure/kv"
