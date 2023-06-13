@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: api-trips-role-binding
+  name: api-user-api-ns-binding
   namespace: api
 subjects:
 - kind: User
@@ -10,7 +10,7 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
-  name: trips_writer
+  name: api_writer
   apiGroup: rbac.authorization.k8s.io
 
 ---
@@ -18,13 +18,8 @@ roleRef:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-<<<<<<< HEAD
   name: api-user-web-ns-role-binding
   namespace: web
-=======
-  name: api-poi-role-binding
-  namespace: api
->>>>>>> f0ebf70b3002386fe7a55def6e6282a3a4bb599b
 subjects:
 - kind: User
   name: 32914a16-78de-4885-b409-1343d31dce3b #<aad-user-object-id>
@@ -39,32 +34,7 @@ roleRef:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-<<<<<<< HEAD
-  name: api-user-api-ns-role-binding
-  namespace: api
-=======
-  name: api-tripviewer-role-binding
-  namespace: web
->>>>>>> f0ebf70b3002386fe7a55def6e6282a3a4bb599b
-subjects:
-- kind: User
-  name: 32914a16-78de-4885-b409-1343d31dce3b #<aad-user-object-id>
-  apiGroup: rbac.authorization.k8s.io
-roleRef:
-  kind: Role
-  name: api-writer
-  apiGroup: rbac.authorization.k8s.io
-
----
-
-apiVersion: rbac.authorization.k8s.io/v1
-kind: RoleBinding
-metadata:
-<<<<<<< HEAD
   name: web-user-api-ns-role-binding
-=======
-  name: web-trips-role-binding
->>>>>>> f0ebf70b3002386fe7a55def6e6282a3a4bb599b
   namespace: api
 subjects:
 - kind: User
@@ -72,7 +42,7 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
-  name: api_reader
+  name: web_reader
   apiGroup: rbac.authorization.k8s.io
 
 ---
