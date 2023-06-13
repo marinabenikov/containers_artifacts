@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: userprofile
+  name: api
   labels:
-    name: userprofile
+    name: api
 ---
 
 
@@ -19,7 +19,7 @@ metadata:
   labels:
     app: tripinsights-userprofile
   name: tripinsights-userprofile
-  namespace: userprofile  
+  namespace: api
 spec:
   progressDeadlineSeconds: 600
   replicas: 1

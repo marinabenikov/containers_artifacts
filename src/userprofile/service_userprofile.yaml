@@ -5,7 +5,7 @@ metadata:
   labels:
     app: tripinsights-userprofile
   name: tripinsights-userprofile
-  namespace: userprofile
+  namespace: api
   resourceVersion: "10338"
   uid: 3eba7b49-d585-4df9-8e05-165cc436f150
 spec:
