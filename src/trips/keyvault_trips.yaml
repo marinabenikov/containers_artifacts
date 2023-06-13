@@ -8,7 +8,7 @@ spec:
   parameters:
     keyvaultName: "TeamSixSecrets"
     useVMManagedIdentity: "true"
-    userAssignedIdentityID: "32914a16-78de-4885-b409-1343d31dce3b"
+    userAssignedIdentityID: "4486325f-b817-4c77-b3a8-ed8f6b5203fc"
     objects:  |
       array:
         - |
