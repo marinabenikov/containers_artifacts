@@ -1,0 +1,30 @@
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: keyvault-trips
+  namespace: api
+spec:
+  provider: azure
+  parameters:
+    keyvaultName: "TeamSixSecrets"
+    useVMManagedIdentity: "true"
+    userAssignedIdentityID: "e28a5206-53d4-4d8e-b3f1-6f2cf28c9250"
+    objects:  |
+      array:
+        - |
+          objectName: SQLSERVER
+          objectAlias: SQL_SERVER
+          objectType: secret
+        - |
+          objectName: SQLDBNAME
+          objectAlias: SQL_DBNAME
+          objectType: secret
+        - |
+          objectName: SQLUSER
+          objectAlias: SQL_USER
+          objectType: secret
+        - |
+          objectName: SQLPASSWORD
+          objectAlias: SQL_PASSWORD
+          objectType: secret        
+    tenantId: "b1e79fe8-a24f-417c-87e7-95e4a5932044"
